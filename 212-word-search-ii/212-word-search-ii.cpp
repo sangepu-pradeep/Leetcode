@@ -2,10 +2,10 @@
 class Solution {
 public:
     struct Trie{
-        int e;Trie* v[26];
+       Trie* v[26];
         Trie(){
             for(int i=0;i<26;i++)v[i]=NULL;
-           e=0;
+           
         }
     };
     Trie*root;
