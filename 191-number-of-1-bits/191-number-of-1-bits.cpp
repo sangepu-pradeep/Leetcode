@@ -1,12 +1,12 @@
 class Solution {
 public:
     int hammingWeight(uint32_t n) {
-      //   int cnt=0;
-      // for(int i=0;i<32;i++){
-      //     cnt+=(n&1);
-      //     n>>=1;
-      // } 
-      //   return cnt;
-      return  __builtin_popcount(n);
+        int e=0; int cnt=0;
+     while(n){
+       
+         n=n^(n&(-n));
+           cnt++;
+     }
+        return cnt;
     }
 };
