@@ -6,7 +6,7 @@ public:
             sum+=a;
         }
         long n=nums.size();
-        long p=(n*(n+1))/2-sum;
-        return (int)p;
+        int p=(n*(n+1))/2-sum;
+        return p;
     }
 };
