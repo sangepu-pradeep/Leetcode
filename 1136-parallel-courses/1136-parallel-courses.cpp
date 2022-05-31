@@ -20,7 +20,7 @@ public:
             q.pop();
             for(auto t:g[a]){
                 in[t]--;
-                if(in[t]<0) return -1;
+               // if(in[t]<0) return -1;
                 if(in[t]==0)q.push(t);
             }
            }
