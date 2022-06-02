@@ -1,23 +1,6 @@
 class Solution {
 public:
-    double dis(int x, int y, int i, int j){
-         int p=(x-i)*(x-i)+(y-j)*(y-j);
-        double t=sqrt(p);
-       // t=(int)t;
-            return t;
-    }
-    double fun(vector<vector<int>>&t, int x, int y, int r){
-        double ans=0; double uu=(double)r;
-        for(auto a:t){
-            double d=dis(a[0],a[1],x,y);
-            if(d>uu)continue;
-           double temp=((double)a[2])/(1.0+dis(a[0],a[1],x,y));
-            temp=(int)temp;
-            ans+=temp;
-        }
-      //  ans=(int)ans;
-        return ans;
-    }
+   
     vector<int> bestCoordinate(vector<vector<int>>& towers, int r) {
        
        int c1=0; int c2=0; int mx=0;
