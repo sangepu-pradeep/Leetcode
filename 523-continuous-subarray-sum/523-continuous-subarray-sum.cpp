@@ -10,7 +10,7 @@ public:
             prefix[i]=nums[i-1]+prefix[i-1];
             int p=prefix[i]%k;
            
-            if(mp.count(p)){            
+            if(mp.find(p)!=mp.end()){            
                 int t=mp[p];         
                 if(i-t>1){return 1;}            
             }
