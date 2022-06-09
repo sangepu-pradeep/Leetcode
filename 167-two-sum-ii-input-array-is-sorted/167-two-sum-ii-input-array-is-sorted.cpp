@@ -1,9 +1,11 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        for(int i=1;i<nums.size();i++){
-            int l=lower_bound(nums.begin(),nums.begin()+i-1,target-nums[i])-nums.begin();
-            if(nums[l]==target-nums[i]) return {l+1,i+1};
+        int i=0; int j=nums.size()-1;
+        while(i<j){
+            if(nums[i]+nums[j]==target) return {i+1,j+1};
+            else if(nums[i]+nums[j]>target) j--;
+            else i++;
         }
         return {};
     }
