@@ -17,6 +17,7 @@ public:
         pq.push({0,0,0,k}); vis[0][0][k]=0;
         while(pq.size()){
             auto a=pq.top(); pq.pop();
+            if(a[1]==r-1&&a[2]==c-1) return a[0];
             for(int i=0;i<4;i++){
                 int x=a[1]+dirx[i]; int y=a[2]+diry[i];
                 if(valid(x,y,r,c)){
@@ -32,11 +33,12 @@ public:
             }
             
         }
-        int ans=INT_MAX;
-       for(int i=0;i<=k;i++){
-           ans=min(ans,vis[r-1][c-1][i]);
-       }
-        if(ans==INT_MAX) return -1;
-        return ans;
+       //  int ans=INT_MAX;
+       // for(int i=0;i<=k;i++){
+       //     ans=min(ans,vis[r-1][c-1][i]);
+       // }
+       //  if(ans==INT_MAX) return -1;
+       //  return ans;
+        return -1;
     }
 };
