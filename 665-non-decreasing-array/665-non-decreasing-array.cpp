@@ -11,11 +11,6 @@ public:
         for(int i=0;i<nums.size();i++){
             if(i+1<nums.size()&&nums[i]>nums[i+1]){
                int t=nums[i];
-            // if(i-1>=0) {
-            //     nums[i]=nums[i-1];
-            //     if(fun(i,nums)) return 1;
-            //     nums[i]=t;
-            //  }
                 if((i-1>=0&&nums[i+1]>=nums[i-1])||i==0){
                    nums[i]=nums[i+1];
                     if(fun(i,nums)) return 1;
