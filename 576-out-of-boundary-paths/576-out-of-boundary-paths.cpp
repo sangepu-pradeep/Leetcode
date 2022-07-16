@@ -9,13 +9,9 @@ public:
      int dp[51][51][51];
     int fun(int x, int y, int m, int r, int c){
         if(dp[x][y][m]!=-1) return dp[x][y][m];
-       if(m==1){
+       if(m==0){
            int l=0;
-            if(x==0)  l++;
-           if(x==r-1) l++;
-           if(y==0)l++;
-           if(y==c-1)l++;
-          return l;
+          return 0;
        }
    int ans=0;
         for(int i=0;i<4;i++){
