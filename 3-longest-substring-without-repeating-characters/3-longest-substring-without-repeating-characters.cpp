@@ -20,12 +20,15 @@ public:
     }
     int lengthOfLongestSubstring(string s) {
 
-       int l=0; int h=s.size(); int ans=1;
-        
-        while(l<=h){
-            int mid=(l+h)/2;
-            if(valid(mid,s)){ l=mid+1; ans=mid;}
-            else h=mid-1;
+      unordered_map<char,int>mp;
+        int prev=0; int ans=0;
+        for(int i=0;i<s.size();i++){
+            if(mp.count(s[i])){
+                prev=max(mp[s[i]]+1,prev);
+            }
+            ans=max(ans,i-prev+1);
+            mp[s[i]]=i;
+            
         }
         return ans;
     }
