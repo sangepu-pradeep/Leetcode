@@ -11,41 +11,19 @@
  */
 class Solution {
 public:
-    void fun(TreeNode*root, unordered_map<TreeNode*,TreeNode*>&mp,unordered_map<TreeNode*,int>&vis,TreeNode*prev){
-        if(root==NULL) return;
-        mp[root]=prev;
-        int p=0;
-        if(root->left) p++;
-        if(root->right) p++;
-         vis[root]=p;
-        fun(root->right,mp,vis,root);
-        fun(root->left,mp,vis,root);
+    int fun(TreeNode*root,map<int,vector<int>>&mp){
+       if(root==NULL) return 0;
+         int t=max(fun(root->left,mp),fun(root->right,mp));
+        mp[t].push_back(root->val);
+        return t+1;
     }
     vector<vector<int>> findLeaves(TreeNode* root) {
-        // priority_queue<pair<int,TreeNode*>,vector<pair<int,TreeNode*>>,greater<pair<int,TreeNode*>>>pq;
-        unordered_map<TreeNode*,int>vis;
-        unordered_map<TreeNode*,TreeNode*>mp; vector<vector<int>>ans;
-        if(root==NULL) return {};
-        fun(root,mp,vis,NULL);
-        while(vis.size()){
-            vector<TreeNode*>temp;
-           for(auto a:vis){
-           if(a.second==0&&a.first==root) {ans.push_back({root->val});
-                                           return ans;}
-               
-           if(a.second==0){
-               temp.push_back(a.first);
-           }
-          } 
-            vector<int>y;
-          for(auto a:temp){
-             // cout<<a->val<<endl;
-              y.push_back(a->val);
-              vis[mp[a]]--; vis[a]--;
-          }  
-            ans.push_back(y);
+     map<int,vector<int>>mp;
+        fun(root,mp);
+        vector<vector<int>>ans;
+        for(auto a:mp){
+            ans.push_back(a.second);
         }
-        return ans;
-       
+       return ans;
     }
 };
