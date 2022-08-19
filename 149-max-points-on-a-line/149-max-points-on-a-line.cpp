@@ -6,7 +6,7 @@ public:
         long double r=1e9;
         for(int i=0;i<p.size();i++){
             unordered_map<long double,int>mp;
-            for(int j=0;j<p.size();j++){
+            for(int j=i;j<p.size();j++){
                 if(i==j)continue;
                  long double t;
                 if( (long double)p[j][0]- (long double)p[i][0]==0)t=1e9;
