@@ -13,12 +13,12 @@ public:
         int ans=0;
         while(l<=h){
             int mid=(l+h)/2;
-            int p=lower_bound(nums1.begin(),nums1.end(),mid)-nums1.begin();
-            int q=lower_bound(nums2.begin(),nums2.end(),mid)-nums2.begin();
+            int p=upper_bound(nums1.begin(),nums1.end(),mid)-nums1.begin();
+            int q=upper_bound(nums2.begin(),nums2.end(),mid)-nums2.begin();
             if(p+q>k){
-                h=mid-1;
+                h=mid-1;ans=mid;
             }else{
-                l=mid+1;ans=mid;
+                l=mid+1;//ans=mid;
             }
             
         }
