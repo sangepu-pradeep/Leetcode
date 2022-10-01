@@ -8,12 +8,12 @@ public:
         int ans=0;
         while(l<=h){
             int mid=(l+h)/2;
-            int l1=upper_bound(nums1.begin(),nums1.end(),mid)-nums1.begin();
-          int l2=upper_bound(nums2.begin(),nums2.end(),mid)-nums2.begin(); 
+            int l1=lower_bound(nums1.begin(),nums1.end(),mid)-nums1.begin();
+          int l2=lower_bound(nums2.begin(),nums2.end(),mid)-nums2.begin(); 
             if(l1+l2<=k){
-             l=mid+1;
+             l=mid+1;ans=mid;
             }
-            else    {ans=mid; h=mid-1;   }
+            else    { h=mid-1;   }
         }
         return ans;
     }
