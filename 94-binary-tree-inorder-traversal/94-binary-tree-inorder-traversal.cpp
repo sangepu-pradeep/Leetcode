@@ -9,21 +9,18 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+vector<int>ans;
+void fun(TreeNode*root){
+    if(root==NULL) return;
+    fun(root->left);
+    ans.push_back(root->val);
+    fun(root->right);
+}
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-        stack<TreeNode*>st; vector<int>ans;
-         TreeNode*temp=root; 
-        while(temp||st.size()){
-            while(temp){
-                st.push(temp);
-                temp=temp->left;
-            }
-            temp=st.top();
-            st.pop();
-            ans.push_back(temp->val);
-            temp=temp->right;
-        }
+        ans={};
+        fun(root);
         return ans;
     }
 };
