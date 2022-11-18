@@ -10,30 +10,30 @@ using namespace std;
 class Solution{   
 public:
 
-    bool fun(int i, int sum, vector<int>&arr,vector<vector<int>>&dp){
+    bool M_compute(int i, int sum, vector<int>& arr,vector<vector<int>>& M){
       
-        if(dp[i][sum]==-1){
+        if(M[i][sum]==-1){
             if(sum<arr[i-1]){ // Here arr[i-1] is ith element(Si) in array
-            dp[i][sum]=fun(i-1,sum,arr,dp);
+            M[i][sum]= M_compute(i-1,sum,arr,M);
             }
             else{
-                dp[i][sum]=(fun(i-1,sum,arr,dp) || fun(i-1,sum-arr[i-1],arr,dp));
+          M[i][sum]=(M_compute(i-1,sum,arr,M) || M_compute(i-1,sum-arr[i-1],arr,M));
             }
         }
-        return dp[i][sum];
+        return M[i][sum];
     }
     bool isSubsetSum(vector<int>arr, int sum){
        int n=arr.size();
-       vector<vector<int>>dp(n+1,vector<int>(sum+1));
+       vector<vector<int>>M(n+1,vector<int>(sum+1));
        for(int i=0;i<=n;i++){
            for(int j=0;j<=sum;j++){
                if(i==0){
-                   if(j==0) dp[i][j]=1;
-                   else dp[i][j]=0;
-               }else dp[i][j]=-1; // Here -1 is what I treat as empty
+                   if(j==0) M[i][j]=1;
+                   else M[i][j]=0;
+               }else M[i][j]=-1; // Here -1 is what I treat as empty
            }
        }
-        return fun(n,sum,arr,dp);
+        return M_compute(n,sum,arr,M);
     }
 };
 
