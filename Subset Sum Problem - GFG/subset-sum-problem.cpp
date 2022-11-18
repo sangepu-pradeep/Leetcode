@@ -15,7 +15,7 @@ public:
             if(sum==0) return 1;
             else return 0;
         }
-        if(sum==0) return 1;
+       // if(sum==0) return 1;
         if(dp[i][sum]==-1){
             
             if(sum<arr[i-1]){
