@@ -11,14 +11,9 @@ class Solution{
 public:
 
     bool fun(int i, int sum, vector<int>&arr,vector<vector<int>>&dp){
-        if(i==0){
-            if(sum==0) return 1;
-            else return 0;
-        }
-       // if(sum==0) return 1;
+      
         if(dp[i][sum]==-1){
-            
-            if(sum<arr[i-1]){
+            if(sum<arr[i-1]){ // Here arr[i-1] is ith element(Si) in array
             dp[i][sum]=fun(i-1,sum,arr,dp);
             }
             else{
@@ -29,7 +24,15 @@ public:
     }
     bool isSubsetSum(vector<int>arr, int sum){
        int n=arr.size();
-       vector<vector<int>>dp(n+1,vector<int>(sum+4,-1));
+       vector<vector<int>>dp(n+1,vector<int>(sum+1));
+       for(int i=0;i<=n;i++){
+           for(int j=0;j<=sum;j++){
+               if(i==0){
+                   if(j==0) dp[i][j]=1;
+                   else dp[i][j]=0;
+               }else dp[i][j]=-1; // Here -1 is what I treat as empty
+           }
+       }
         return fun(n,sum,arr,dp);
     }
 };
